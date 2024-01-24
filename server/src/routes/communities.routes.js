@@ -1,11 +1,10 @@
-import { CommunityController } from '../controllers/CommunityController.js';
+import { CommunitiesController } from '../controllers/CommunitiesController.js';
+const communitiesController = new CommunitiesController();
 
-const communityController = new CommunityController();
+export async function communityRoutes(fastify, opts) {
+  fastify.post('/', (request, reply) => communitiesController.create(request, reply));
 
-export async function communityRoutes(fastify, options) {
-  fastify.post('/', (request, reply) => communityController.create(request, reply));
+  fastify.get('/', (request, reply) => communitiesController.list(request, reply));
 
-  fastify.get('/', (request, reply) => communityController.list(request, reply));
-
-  fastify.get('/:id', (request, reply) => communityController.show(request, reply));
+  fastify.get('/:id', (request, reply) => communitiesController.show(request, reply));
 }
