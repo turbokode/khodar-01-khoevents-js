@@ -1,0 +1,18 @@
+@url= http://localhost:3333/api/v1/communities
+
+POST {{url}}
+Content-Type: application/json
+
+{
+	"name": "Mozdevz",
+	"email": "hello2@mozdevz.co.mz",
+	"password": "123456"
+}
+
+###
+
+GET {{url}}?name=Mozdevz
+
+###
+
+GET {{url}}/75299bd4-239b-4a28-89df-27e090904a9e
