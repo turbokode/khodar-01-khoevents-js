@@ -1,0 +1,22 @@
+@url = http://localhost:3333/api/v1/tickets
+
+POST {{url}}
+Content-Type: application/json
+
+{
+	"attendeeName": "Luis",
+	"attendeeEmail": "luis@gmail.com",
+	"eventId": "28bba7ac-dd09-411f-a2be-00d738af82d0"
+}
+
+###
+
+GET {{url}}/28bba7ac-dd09-411f-a2be-00d738af82d0?page=0
+
+###
+
+PATCH  {{url}}/checkin/28bba7ac-dd09-411f-a2be-00d738af82d0
+
+ {
+	"attendeeEmail": "luis@gmail.com"
+ }

@@ -20,10 +20,6 @@ Content-Disposition: form-data; name="date"
 
 2024-01-15
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="communityId"
-
-e2cf8246-4c05-43a2-b4f2-73479a69d5c8
-------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="status"
 
 PUBLISHED
@@ -44,13 +40,13 @@ Content-Type: image/jpeg
 
 ###
 
-# GET {{url}}?title=edição&communityId=0f2217d2-81b9-4d00-b68c-b349bf8a5e90
-# Content-Type: application/json
+GET {{url}}?title=edição&communityId=0f2217d2-81b9-4d00-b68c-b349bf8a5e90
+Content-Type: application/json
 
-# ###
+###
 
-# GET {{url}}/28bba7ac-dd09-411f-a2be-00d738af82d0
+GET {{url}}/28bba7ac-dd09-411f-a2be-00d738af82d0
 
-# ###
+###
 
-# DELETE {{url}}/28bba7ac-dd09-411f-a2be-00d738af82d0
+DELETE {{url}}/28bba7ac-dd09-411f-a2be-00d738af82d0

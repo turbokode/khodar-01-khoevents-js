@@ -8,19 +8,9 @@
   - [Sobre o projeto](#sobre-o-projeto)
     - [Funcionalidades principais](#funcionalidades-principais)
     - [Tecnologias](#tecnologias)
-  - [Endpoints da API](#endpoints-da-api)
-    - [1. Status da API](#1-status-da-api)
-    - [2. Comunidades](#2-comunidades)
-    - [3. Sessões](#3-sessões)
-    - [4. Eventos](#4-eventos)
-    - [5. Tickets](#5-tickets)
-  - [Testando a app 🚀](#testando-a-app-)
-    - [Pré-requisitos 📋](#pré-requisitos-)
-    - [Instalação 🛠️](#instalação-️)
   - [Como Contribuir](#como-contribuir)
     - [Reportar Problemas ou Sugestões](#reportar-problemas-ou-sugestões)
     - [Contribuir com Código](#contribuir-com-código)
-    - [Desenvolvimento Local](#desenvolvimento-local)
   - [Licença📝](#licença)
 
 ## Sobre o Khodar
@@ -83,16 +73,8 @@ Se deseja contribuir diretamente com código, siga os passos abaixo:
 6. Faça push para a sua branch: `git push origin sua-feature`.
 7. Abra um **pull request** neste repositório.
 
-### Desenvolvimento Local
-
-Para configurar o projeto localmente, siga os passos abaixo:
-
-1. Clone o repositório: `git clone https://github.com/seu-username/seu-projeto.git`.
-2. Instale as dependências: `npm install` (ou `yarn install`).
-3. Execute o projeto localmente: `npm run dev` (ou `yarn dev`).
-
 ## Licença📝
 
-Este projeto está sob a licença GPL-3.0. verifique o arquivo [LICENSE](LICENSE) para obter detalhes.
+Este projeto está sob a licença MIT. verifique o arquivo [LICENSE](LICENSE) para obter detalhes.
 
 ---

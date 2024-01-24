@@ -1,18 +1,44 @@
-@url= http://localhost:3333/api/v1/communities
+@url = http://localhost:3333/api/v1/communities
 
 POST {{url}}
 Content-Type: application/json
 
 {
-	"name": "Mozdevz",
-	"email": "hello2@mozdevz.co.mz",
-	"password": "123456"
+	"name": "Khodar",
+	"description": "A comunidade dos devs Full Stack",
+  "email": "hello2@khodar.co.mz",
+	"website": "khodar.co.mz",
+  "password": "123456"
 }
 
 ###
 
-GET {{url}}?name=Mozdevz
+GET {{url}}/verify/63e7527b-29cf-471c-8b8a-09d89905d454
 
 ###
 
-GET {{url}}/75299bd4-239b-4a28-89df-27e090904a9e
+GET {{url}}?name=Kho
+
+###
+
+GET  {{url}}/0f2217d2-81b9-4d00-b68c-b349bf8a5e90
+
+###
+
+GET  {{url}}/events
+
+###
+
+GET  {{url}}/me
+
+###
+
+PATCH {{url}}/avatar
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="avatar"; filename="khodar.jpg"
+Content-Type: image/jpeg
+
+< ./images/khodar.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

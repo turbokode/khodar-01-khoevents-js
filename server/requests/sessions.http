@@ -1,0 +1,13 @@
+@url = http://localhost:3333/api/v1/sessions
+
+POST {{url}}
+Content-Type: application/json
+
+{
+	"email": "hiii@khodar.co.mz",
+	"password": "12345"
+}
+
+###
+
+DELETE {{url}}
