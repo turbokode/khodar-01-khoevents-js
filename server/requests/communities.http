@@ -6,14 +6,10 @@ Content-Type: application/json
 {
 	"name": "Khodar",
 	"description": "A comunidade dos devs Full Stack",
-  "email": "hello2@khodar.co.mz",
+  "email": "hello3@khodar.co.mz",
 	"website": "khodar.co.mz",
   "password": "123456"
 }
-
-###
-
-GET {{url}}/verify/63e7527b-29cf-471c-8b8a-09d89905d454
 
 ###
 
@@ -21,7 +17,25 @@ GET {{url}}?name=Kho
 
 ###
 
-GET  {{url}}/0f2217d2-81b9-4d00-b68c-b349bf8a5e90
+GET  {{url}}/0c5c6ef2-8de3-4687-ad18-045c09d053cb
+
+###
+
+PUT  {{url}}/
+
+{
+	"communityId": "0c5c6ef2-8de3-4687-ad18-045c09d053cb",
+	"name": "Khodar edited",
+	"description": "A comunidade dos devs Full Stack de moz",
+  "email": "helloedit@khodar.co.mz",
+	"website": "khodar.co.mz"
+}
+
+###
+
+GET {{url}}/verify/63e7527b-29cf-471c-8b8a-09d89905d454
+
+
 
 ###
 
@@ -36,6 +50,10 @@ GET  {{url}}/me
 PATCH {{url}}/avatar
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="communityId"
+
+0c5c6ef2-8de3-4687-ad18-045c09d053cb
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="avatar"; filename="khodar.jpg"
 Content-Type: image/jpeg

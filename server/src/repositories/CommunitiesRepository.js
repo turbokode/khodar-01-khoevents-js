@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt';
 import { prisma } from '../database/index.js';
 
 export class CommunitiesRepository {
-  communities = new Map();
   client = prisma.community;
 
   async save({ name, email, password }) {
@@ -19,10 +18,44 @@ export class CommunitiesRepository {
     return community;
   }
 
-  getById(id) {
-    const community = this.communities.get(id);
+  async getByEmail(email) {
+    const community = await this.client.findUnique({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        website: true,
+        description: true,
+        createdAt: true,
+        updatedAt: true,
+        password: false
+      },
+      where: {
+        email
+      }
+    });
 
-    delete community.password;
+    return community;
+  }
+
+  async getById(id) {
+    const community = await this.client.findUnique({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        website: true,
+        description: true,
+        createdAt: true,
+        updatedAt: true,
+        avatar_id: true,
+        avatar: true,
+        password: false
+      },
+      where: {
+        id
+      }
+    });
 
     return community;
   }
@@ -46,5 +79,20 @@ export class CommunitiesRepository {
       }
     });
     return communities;
+  }
+
+  async update(id, { name, email, website, description, avatarId }) {
+    await this.client.update({
+      where: {
+        id
+      },
+      data: {
+        name,
+        email,
+        website,
+        description,
+        avatar_id: avatarId
+      }
+    });
   }
 }

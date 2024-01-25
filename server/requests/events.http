@@ -4,9 +4,13 @@ POST {{url}}
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="communityId"
+
+0c5c6ef2-8de3-4687-ad18-045c09d053cb
+------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="title"
 
-Khodar 1ª edição
+Titulo 1ª edição
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="description"
 
@@ -30,7 +34,7 @@ Content-Disposition: form-data; name="startTime"
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="endTime"
 
-11:00
+12:00
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="banner"; filename="khodar.jpg"
 Content-Type: image/jpeg
@@ -40,7 +44,8 @@ Content-Type: image/jpeg
 
 ###
 
-GET {{url}}?title=edição&communityId=0f2217d2-81b9-4d00-b68c-b349bf8a5e90
+# GET {{url}}?title=edição&communityId=0f2217d2-81b9-4d00-b68c-b349bf8a5e90
+GET {{url}}?page=1
 Content-Type: application/json
 
 ###

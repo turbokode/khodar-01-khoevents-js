@@ -22,6 +22,9 @@ model Community {
   updatedAt DateTime @updatedAt @map("updated_at")
   Event     Event[]
 
+  avatar    File?   @relation(fields: [avatar_id], references: [id])
+  avatar_id String?
+
   @@map("communities")
 }
 
@@ -30,8 +33,9 @@ model File {
   originalName String @map("original_name") @db.VarChar(255)
   filename     String @db.VarChar(255)
 
-  events Event[]
+  events    Event[]
   // communities Community[]
+  Community Community[]
 
   @@map("files")
 }
@@ -53,9 +57,9 @@ model Event {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   // tickets     Ticket[]
-  community   Community  @relation(fields: [communityId], references: [id])
+  community   Community? @relation(fields: [communityId], references: [id])
   communityId String
-  banner      File       @relation(fields: [banner_id], references: [id])
+  banner      File?      @relation(fields: [banner_id], references: [id])
   banner_id   String
 
   @@map("events")
