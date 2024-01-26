@@ -5,7 +5,8 @@ import { EventsRepository } from '../repositories/EventsRepository.js';
 export class EventsController {
   repository = new EventsRepository();
   async create(request, reply) {
-    const { title, description, limit, date, startTime, endTime, communityId, banner } = request.body;
+    const { title, description, limit, date, startTime, endTime, banner } = request.body;
+    const { communityId } = request;
 
     const parsedStartTime = parseTimeToDate(startTime);
     const parsedEndTime = parseTimeToDate(endTime);

@@ -1,11 +1,17 @@
 import { EventsController } from '../controllers/EventsController.js';
-const eventsController = new EventsController();
+import { auth } from '../hooks/auth.js';
 import { upload } from '../hooks/upload.js';
 
-export async function eventRoutes(fastify, opts) {
-  fastify.post('/', { preHandler: upload('banner') }, (request, reply) => eventsController.create(request, reply));
+const eventsController = new EventsController();
 
+export async function eventRoutes(fastify, opts) {
   fastify.get('/', (request, reply) => eventsController.list(request, reply));
 
-  // fastify.get('/:id', (request, reply) => communitiesController.show(request, reply));
+  fastify.register(authRoutes);
+}
+
+async function authRoutes(fastify) {
+  fastify.decorateRequest('communityId', '');
+  fastify.addHook('preHandler', auth);
+  fastify.post('/', { preHandler: upload('banner') }, (request, reply) => eventsController.create(request, reply));
 }

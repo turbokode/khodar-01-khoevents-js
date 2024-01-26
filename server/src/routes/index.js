@@ -1,5 +1,6 @@
 import { communityRoutes } from './communities.routes.js';
 import { eventRoutes } from './events.routes.js';
+import { sessionRoutes } from './sessions.routes.js';
 
 export async function routes(fastify, opts) {
   fastify.get('/', (request, reply) => {
@@ -8,4 +9,5 @@ export async function routes(fastify, opts) {
 
   fastify.register(communityRoutes, { prefix: '/communities' });
   fastify.register(eventRoutes, { prefix: '/events' });
+  fastify.register(sessionRoutes, { prefix: '/sessions' });
 }

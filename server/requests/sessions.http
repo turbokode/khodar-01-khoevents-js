@@ -4,8 +4,8 @@ POST {{url}}
 Content-Type: application/json
 
 {
-	"email": "hiii@khodar.co.mz",
-	"password": "12345"
+	"email": "hello2@khodar.co.mz",
+	"password": "123456"
 }
 
 ###

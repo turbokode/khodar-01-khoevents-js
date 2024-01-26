@@ -4,10 +4,6 @@ POST {{url}}
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="communityId"
-
-0c5c6ef2-8de3-4687-ad18-045c09d053cb
-------WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Disposition: form-data; name="title"
 
 Titulo 1ª edição

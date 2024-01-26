@@ -1,14 +1,20 @@
+import { sendMail } from '../lib/mail.js';
 import { CommunitiesRepository } from '../repositories/CommunitiesRepository.js';
 export class CommunitiesController {
   repository = new CommunitiesRepository();
   async create(request, reply) {
     const { name, email, password } = request.body;
 
-    const communityExists = await this.repository.getByEmail(email);
+    // const communityExists = await this.repository.getByEmail(email);
 
-    if (communityExists) return reply.status(400).send({ error: 'Community exists' });
+    // if (communityExists) return reply.status(400).send({ error: 'Community exists' });
 
-    await this.repository.save({ name, email, password });
+    // await this.repository.save({ name, email, password });
+    await sendMail({
+      subject: 'Verifique o seu email',
+      to: email,
+      text: `Clique no link para verificar o seu email`
+    });
 
     return reply.status(201).send();
   }
@@ -29,7 +35,8 @@ export class CommunitiesController {
   }
 
   async update(request, reply) {
-    const { name, email, website, description, communityId } = request.body;
+    const { name, email, website, description } = request.body;
+    const { communityId } = request;
 
     const communityExists = await this.repository.getByEmail(email);
     if (communityExists) return reply.status(400).send({ error: 'Community exists' });
@@ -40,7 +47,8 @@ export class CommunitiesController {
   }
 
   async updateAvatar(request, reply) {
-    const { communityId, avatar } = request.body;
+    const { avatar } = request.body;
+    const { communityId } = request;
     await this.repository.update(communityId, { avatarId: avatar.id });
     return reply.send();
   }

@@ -18,7 +18,7 @@ export class CommunitiesRepository {
     return community;
   }
 
-  async getByEmail(email) {
+  async getByEmail(email, options = { password: false }) {
     const community = await this.client.findUnique({
       select: {
         id: true,
@@ -28,7 +28,7 @@ export class CommunitiesRepository {
         description: true,
         createdAt: true,
         updatedAt: true,
-        password: false
+        password: options.password
       },
       where: {
         email
