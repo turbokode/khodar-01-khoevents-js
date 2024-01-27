@@ -4,10 +4,18 @@ POST {{url}}
 Content-Type: application/json
 
 {
-	"email": "hello2@khodar.co.mz",
-	"password": "123456"
+	"email": "hello8@khodar.co.mz",
+	"password": "password"
 }
 
 ###
 
 DELETE {{url}}
+
+###
+
+PATCH {{url}}/reset-password
+
+{
+	"email": "hello8@khodar.co.mz"
+}

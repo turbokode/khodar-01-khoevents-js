@@ -1,6 +1,9 @@
 import { CommunitiesRepository } from '../repositories/CommunitiesRepository.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { randomUUID } from 'crypto';
+import { sendMail } from '../lib/mail.js';
+import { redis } from '../database/redis.js';
 
 export class SessionsController {
   communityRepository = new CommunitiesRepository();
@@ -27,6 +30,22 @@ export class SessionsController {
         maxAge: 60 * 60 * 24
       })
       .send(community);
+  }
+
+  async resetPassword(request, reply) {
+    const { email } = request.body;
+
+    const resetToken = randomUUID();
+    await redis.set(`reset_password_${resetToken}`, email, 60 * 60);
+    const resetLink = `http://localhost/api/v1/communities/reset-password/${resetToken}`;
+
+    await sendMail({
+      subject: 'Redifinicao da senha',
+      to: email,
+      text: `Clique no <a href="${resetLink}">link</a> para mudar a senha`
+    });
+    
+    return reply.status(204).send();
   }
 
   async logout(request, reply) {

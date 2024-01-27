@@ -5,9 +5,7 @@ Content-Type: application/json
 
 {
 	"name": "Khodar",
-	"description": "A comunidade dos devs Full Stack",
-  "email": "hello7@khodar.co.mz",
-	"website": "khodar.co.mz",
+  "email": "hello9@khodar.co.mz",
   "password": "123456"
 }
 
@@ -33,7 +31,20 @@ PUT  {{url}}/
 
 ###
 
-GET {{url}}/verify/63e7527b-29cf-471c-8b8a-09d89905d454
+PATCH {{url}}/verify/d4bf840d-3629-4662-a15b-1af6ea1725dd
+
+{
+
+}
+
+
+###
+
+PATCH {{url}}/reset-password/59e3bcba-7482-4a91-a994-ccd096184992
+
+{
+	"password": "password"
+}
 
 
 

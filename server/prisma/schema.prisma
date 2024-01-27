@@ -17,6 +17,7 @@ model Community {
   website     String? @db.VarChar(255)
   description String? @db.VarChar(255)
   password    String  @db.VarChar(255)
+  verified    Boolean @default(false)
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")

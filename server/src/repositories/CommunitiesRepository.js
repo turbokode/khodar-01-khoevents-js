@@ -1,12 +1,17 @@
-import { randomUUID } from 'crypto';
 import bcrypt from 'bcrypt';
 import { prisma } from '../database/index.js';
 
 export class CommunitiesRepository {
   client = prisma.community;
 
-  async save({ name, email, password }) {
+  async hashPassword(password) {
     const passwordHash = await bcrypt.hash(password, 10);
+    return passwordHash;
+  }
+
+  async save({ name, email, password }) {
+    const passwordHash = await this.hashPassword(password);
+
     const community = await this.client.create({
       data: {
         name,
@@ -81,7 +86,19 @@ export class CommunitiesRepository {
     return communities;
   }
 
-  async update(id, { name, email, website, description, avatarId }) {
+  async updatePassword(id, password) {
+    const passwordHash = await this.hashPassword(password);
+    await this.client.update({
+      where: {
+        id
+      },
+      data: {
+        password: passwordHash
+      }
+    });
+  }
+
+  async update(id, { name, email, website, description, avatarId, verified, password }) {
     await this.client.update({
       where: {
         id
@@ -91,6 +108,7 @@ export class CommunitiesRepository {
         email,
         website,
         description,
+        verified,
         avatar_id: avatarId
       }
     });

@@ -7,6 +7,8 @@ export async function communityRoutes(fastify, opts) {
   fastify.post('/', (request, reply) => communitiesController.create(request, reply));
   fastify.get('/', (request, reply) => communitiesController.list(request, reply));
   fastify.get('/:id', (request, reply) => communitiesController.show(request, reply));
+  fastify.patch('/verify/:token', (request, reply) => communitiesController.verify(request, reply));
+  fastify.patch('/reset-password/:token', (request, reply) => communitiesController.resetPassword(request, reply));
 }
 
 async function authRoutes(fastify) {

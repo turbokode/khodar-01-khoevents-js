@@ -1,22 +1,64 @@
+import { randomUUID } from 'crypto';
+import { z } from 'zod';
 import { sendMail } from '../lib/mail.js';
 import { CommunitiesRepository } from '../repositories/CommunitiesRepository.js';
+import { redis } from '../database/redis.js';
+import { AppError } from '../errors/AppError.js';
 export class CommunitiesController {
   repository = new CommunitiesRepository();
   async create(request, reply) {
-    const { name, email, password } = request.body;
+    const BodySchema = z.object({
+      name: z.string(),
+      email: z.string().email(),
+      password: z.string().min(6, { message: 'Must be 5 or more characters long' })
+    });
 
-    // const communityExists = await this.repository.getByEmail(email);
+    const { name, email, password } = BodySchema.parse(request.body);
 
-    // if (communityExists) return reply.status(400).send({ error: 'Community exists' });
+    const communityExists = await this.repository.getByEmail(email);
 
-    // await this.repository.save({ name, email, password });
+    if (communityExists) throw new AppError('Community creation', 'Community already exists', 403);
+
+    const { id } = await this.repository.save({ name, email, password });
+
+    const verifyToken = randomUUID();
+    await redis.set(`verify_${verifyToken}`, id, 60 * 60);
     await sendMail({
       subject: 'Verifique o seu email',
       to: email,
-      text: `Clique no link para verificar o seu email`
+      text: `Clique no <a href="http://localhost/api/v1/communities/verify/${verifyToken}">link</a> para verificar o seu email`
     });
 
     return reply.status(201).send();
+  }
+
+  async verify(request, reply) {
+    const { token } = request.params;
+
+    const communityId = await redis.get(`verify_${token}`);
+
+    await this.repository.update(communityId, { verified: true });
+
+    await redis.delete(`verify_${token}`);
+
+    return reply.status(204).send();
+  }
+
+  async resetPassword(request, reply) {
+    const { token } = request.params;
+    const { password } = request.body;
+
+    const email = await redis.get(`reset_password_${token}`);
+
+    const community = await this.repository.getByEmail(email);
+
+    if (!community) return reply.status(403).send({ error: "Community doesn't exist" });
+
+    await this.repository.updatePassword(community.id, password);
+
+    await redis.delete(`reset_password_${token}`);
+
+    return reply.status(204).send();
   }
 
   async list(request, reply) {

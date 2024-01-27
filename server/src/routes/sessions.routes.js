@@ -5,6 +5,7 @@ const sessionController = new SessionsController();
 export async function sessionRoutes(fastify, opts) {
   fastify.post('/', (request, reply) => sessionController.login(request, reply));
   fastify.delete('/', { preHandler: auth }, (request, reply) => sessionController.logout(request, reply));
+  fastify.patch('/reset-password', (request, reply) => sessionController.resetPassword(request, reply));
 
   // fastify.get('/', (request, reply) => eventsController.list(request, reply));
 

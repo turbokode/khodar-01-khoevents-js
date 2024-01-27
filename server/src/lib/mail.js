@@ -10,9 +10,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function sendMail({ to, subject, text }) {
-  const port = process.env.MAIL_PORT;
-  const user = process.env.MAIL_USER;
-  const info = await transporter.sendMail({
+  await transporter.sendMail({
     from: '"thebugger(khodar)" <noreply@khodar.co.mz>',
     to,
     subject,
