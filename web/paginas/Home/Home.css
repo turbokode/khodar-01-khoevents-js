@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+.Home{
+    font-family: 'Poppins', sans-serif;
+}
+.HeaderBar{
+    width: max-content;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
+#CampoPesquisa{
+    display: flex;
+    background: #1E1E1E;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+#CampoPesquisa>input{
+    background-color: #1E1E1E;
+    border: none;
+    outline: none;
+    color: white;
+    outline: none;
+
+}
+#CampoPesquisa>img{
+    cursor: pointer;
+}
+.MenuBurguer{
+    height: 40px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.NavBar {
+    background-color: #252525;
+    width: 300px; /* Largura da NavBar */
+    height: 0; /* Inicia com altura 0 */
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    padding-left: 20px;
+    left: 0;
+    overflow: hidden; /* Garante que o conteúdo seja oculto quando a altura é 0 */
+    transition: height 0.85s; /* Adiciona transição suave apenas à propriedade height */
+}
+
+.NavBar.invisivel {
+    width: 0;
+    height: 0; /* Mantém altura 0 quando a classe invisivel está presente */
+    background-color: #25252500;
+    
+}
+
+.NavBar.visible {
+    height: 100vh; /* Define a altura desejada quando a NavBar está visível */
+}
+
+.NavBar>a{
+    text-decoration: none;
+    color: white;
+    background-color: #303030;
+    width: max-content;
+    padding: 7px 15px;
+    border-radius: 7px;
+    font-weight: 500;
+    font-size: 14px;
+    
+}
+.NavBar>a:hover{
+    background-color: #00C54E;
+    transition: background-color 0.5s ease-in-out;
+    cursor: pointer;
+}
+.Comunidades>h2{
+    color: white;
+    font-size: 13px;
+    padding-left: 40px;
+    margin-bottom: 10px;
+
+}
+
+.BoxComunidades{
+    padding-left:20px ;
+    display: flex;
+    gap: 10px;
+    overflow: auto;
+    
+}
+
+.BoxComunidades::-webkit-scrollbar {
+    width: 0px; /* Ajuste a largura conforme necessário */
+}
+
+
+.BoxComunidades>div{
+    background-color: #1E1E1E;
+    width: max-content;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+
+}
+.BoxComunidades>div>h2{
+    font-size: 16px;
+    font-weight: 700;
+    
+    
+}
+.BoxComunidades>div>p{
+    font-size: 12px;
+    color: #807A7A;
+    ;
+}
+
+.ProximosEventos{
+    padding-left: 20px;
+}
+.ProximosEventos>h2{
+    color: white;
+    font-size: 13px;
+    margin-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.BoxEventos{
+    display: grid;
+   width: max-content;
+    grid-template-columns: repeat(2, 0fr);
+    row-gap: 20px;
+    column-gap: 10px;
+    margin: auto;
+}
+
+.BoxEventoConteudo{
+    width: 156.5px;
+    height: 200px;
+    
+    background-size: cover;
+    
+}
+#Evento1{
+    background-image: url('../../assets/DataWave.png');
+}
+#Evento2{
+    background-image: url('../../assets/HackDay.png');
+}
+.overlay{
+    padding-left: 12px;
+    padding-top: 12px;
+    height: 200px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), black);
+    color: white;
+}
+.NomeComunidade{
+    
+    font-size: 700;
+    font-size: 12px;
+    background-color: #25252573;
+    width: max-content;
+    padding: 4px 8px 4px 8px;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+.NomeEvento{
+    margin-top: 80px;
+    font-size: 17px;
+    font-weight: 700;
+}
+.DataHora, .LocalEvento{
+    font-size: 12px;
+    font-weight: 400;
+    
+
+}
+
+@media (min-width:700px) {
+    .BoxEventos{
+        
+        grid-template-columns: repeat(4, 0fr);
+        margin: 0;
+      
+    }
+}
+
+@media (min-width:1024px){
+    .Home{
+        overflow: hidden;
+    }
+    .MenuBurguer{
+        display: none;
+    }
+    #CampoPesquisa{
+        width: 400px;
+        position: relative; /* Importante para posicionar elementos filhos de forma relativa a este contêiner */}
+        
+        
+    
+    #CampoPesquisa>img{
+        position: absolute;
+        margin-top: -3px;
+        right: 20px;
+    }
+    .ConteudoPrincipal{
+        margin-left: 320px;
+        
+    }
+    
+    .NavBar{
+        transition: none;
+    }
+    .NavBar.invisivel , .NavBar.visible{
+        width: 300px;
+        height: 100vh;
+        background-color: #252525;
+    }
+
+    
+}
