@@ -1,0 +1,14 @@
+.Campo {
+  display: flex;
+  background: #1e1e1e;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.Campo > input {
+  background-color: #1e1e1e;
+  border: none;
+  outline: none;
+  color: white;
+}

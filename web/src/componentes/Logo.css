@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:wght@400;500;600;700&display=swap');
+
+
+.Logo{
+    width: max-content;
+}
+.Logo>h1{
+    font-weight: 700;
+    font-size: 50px;
+    color: white;
+    
+    font-family: 'E xpletus Sans', sans-serif;
+}
+.Logo>h1>span{
+    color: #08F165;
+}
+
+@media(min-width:700px){
+    .Logo>h1{
+        font-size: 50px;
+    }
+}

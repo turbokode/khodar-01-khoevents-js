@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+.Home {
+  font-family: 'Poppins', sans-serif;
+}
+.HeaderBar {
+  width: max-content;
+  margin: auto;
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+#CampoPesquisa {
+  display: flex;
+  background: #1e1e1e;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+#CampoPesquisa > input {
+  background-color: #1e1e1e;
+  border: none;
+  outline: none;
+  color: white;
+  outline: none;
+}
+#CampoPesquisa > img {
+  cursor: pointer;
+}
+.MenuBurguer {
+  height: 40px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.NavBar {
+  background-color: #252525;
+  width: 300px; /* Largura da NavBar */
+  height: 0; /* Inicia com altura 0 */
+  gap: 20px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+  padding-left: 20px;
+  left: 0;
+  overflow: hidden; /* Garante que o conteúdo seja oculto quando a altura é 0 */
+  transition: height 0.85s; /* Adiciona transição suave apenas à propriedade height */
+}
+
+.NavBar.invisivel {
+  width: 0;
+  height: 0; /* Mantém altura 0 quando a classe invisivel está presente */
+  background-color: #25252500;
+}
+
+.NavBar.visivel {
+  height: 100vh; /* Define a altura desejada quando a NavBar está visível */
+  position: absolute;
+  z-index: 1666711;
+}
+
+.NavBar > a {
+  text-decoration: none;
+  color: white;
+  background-color: #303030;
+  width: max-content;
+  padding: 7px 15px;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.NavBar > a:hover {
+  background-color: #00c54e;
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
+}
+.Comunidades > h2 {
+  color: white;
+  font-size: 13px;
+  padding-left: 40px;
+  margin-bottom: 10px;
+}
+
+.BoxComunidades {
+  padding-left: 20px;
+  display: flex;
+  gap: 10px;
+  overflow: auto;
+}
+
+.BoxComunidades::-webkit-scrollbar {
+  width: 0px; /* Ajuste a largura conforme necessário */
+}
+
+.BoxComunidades > div {
+  background-color: #1e1e1e;
+  width: max-content;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+.BoxComunidades > div img {
+  width: 212px;
+  height: 212px;
+}
+.BoxComunidades > div > h2 {
+  font-size: 16px;
+  font-weight: 700;
+}
+.BoxComunidades > div > p {
+  font-size: 12px;
+  color: #807a7a;
+}
+
+.ProximosEventos {
+  padding-left: 20px;
+}
+.ProximosEventos > h2 {
+  color: white;
+  font-size: 13px;
+  margin-top: 20px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.BoxEventos {
+  display: grid;
+  width: max-content;
+  grid-template-columns: repeat(2, 0fr);
+  row-gap: 20px;
+  column-gap: 10px;
+  margin: auto;
+}
+
+.BoxEventoConteudo {
+  width: 156.5px;
+  height: 200px;
+}
+
+.overlay {
+  position: relative !important;
+  color: white;
+}
+
+.overlay:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ImagemEvento {
+  width: 100%;
+}
+.BoxEventoConteudo > .overlay > article {
+  z-index: 22229;
+  position: absolute;
+  margin-left: 10px;
+}
+.NomeComunidade {
+  font-size: 700;
+  font-size: 12px;
+  background-color: #25252573;
+  width: max-content;
+  padding: 4px 8px 4px 8px;
+  border-radius: 6px;
+  margin-left: 10px;
+  position: absolute;
+  margin-top: 10px;
+}
+.BoxEventoConteudo > .overlay > article > .NomeEvento {
+  margin-top: -90px;
+  font-size: 17px;
+  font-weight: 700;
+}
+.BoxEventoConteudo > .overlay > article > .DataHora,
+.LocalEvento {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+@media (min-width: 700px) {
+  .BoxEventos {
+    grid-template-columns: repeat(4, 0fr);
+    margin: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Home {
+    overflow: hidden;
+  }
+  .MenuBurguer {
+    display: none;
+  }
+  #CampoPesquisa {
+    width: 400px;
+    position: relative; /* Importante para posicionar elementos filhos de forma relativa a este contêiner */
+  }
+
+  #CampoPesquisa > img {
+    position: absolute;
+    margin-top: -3px;
+    right: 20px;
+  }
+  .ConteudoPrincipal {
+    margin-left: 320px;
+  }
+
+  .NavBar {
+    transition: none;
+  }
+  .NavBar.invisivel,
+  .NavBar.visivel {
+    width: 300px;
+    height: 100vh;
+    background-color: #252525;
+  }
+}

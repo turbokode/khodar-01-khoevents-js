@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Expletus+Sans:wght@400;500;600;700&display=swap');
+
+.StartScreen{
+    background-color: #101010;
+    height: 100vh;
+    font-family: 'Expletus Sans', sans-serif;
+    color: white;
+
+}
+.StartScreen>.Logo{
+    width: max-content;
+    height: max-content;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
