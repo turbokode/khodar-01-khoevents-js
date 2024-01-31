@@ -2,6 +2,7 @@ import 'dotenv/config.js';
 import Fastify from 'fastify';
 import fastifyMultipart from '@fastify/multipart';
 import fastifyCookie from '@fastify/cookie';
+import cors from '@fastify/cors';
 import { routes } from './routes/index.js';
 import './database/redis.js';
 import { ZodError } from 'zod';
@@ -9,6 +10,9 @@ import { AppError } from './errors/AppError.js';
 
 const fastify = Fastify({
   logger: true
+});
+await fastify.register(cors, {
+  origin: '*'
 });
 
 fastify.register(fastifyMultipart, { attachFieldsToBody: true });
@@ -21,6 +25,8 @@ fastify.register(fastifyCookie, {
   }
 });
 fastify.register(routes, { prefix: '/api/v1' });
+
+
 
 fastify.setErrorHandler((error, request, reply) => {
   // if (error instanceof Fastify.errorCodes.FST_ERR_BAD_STATUS_CODE) {

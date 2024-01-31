@@ -28,7 +28,11 @@ export class EventsRepository {
         communityId
       },
       skip: 10 * page,
-      take: 10
+      take: 10,
+      include: {
+        banner: true,
+        community: true
+      }
     });
     return events;
   }

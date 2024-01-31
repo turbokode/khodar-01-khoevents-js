@@ -75,6 +75,7 @@ export class CommunitiesRepository {
         description: true,
         createdAt: true,
         updatedAt: true,
+        avatar: true,
         password: false
       },
       where: {
