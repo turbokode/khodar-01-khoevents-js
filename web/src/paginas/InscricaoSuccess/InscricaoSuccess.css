@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+
+.EntrarTitulo{
+    width: max-content;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    
+    margin-top: 50px;
+    margin-bottom: 20px;
+    
+}
+
+.InscreverForm>img{
+    display: block;
+    margin: auto;
+}
+#EntrarTitulo{
+    margin: auto;
+    margin-bottom: 5px;
+
+    font-weight: 700;
+}
+#ParagrafoTitulo{
+    color: #a1a1a1;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.InscreverForm{
+    max-width: 300px;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #1E1E1E;
+    padding: 30px;
+    border-radius: 10px;
+   
+}
+.Campo{
+    display: flex;
+    background: #2C2C2C;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+.Campo>input{
+    background-color: #2C2C2C;
+    border: none;
+    outline: none;
+    color: white;
+    outline: none;
+
+}
+
+.Submeter{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    display: block;
+    width: 250px;
+    height: 45px ;
+    margin: auto;
+    background-color: #00C54E;
+    border: none;
+    border-radius: 15px;
+    background-image: url(../../assets/BotaoVoltar.png);
+    background-repeat: no-repeat;
+    background-position: 85%;
+    font-size: 16px;
+    color: white;
+}
+.Submeter:hover{
+    background-color: #01ee60;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+}
+
+
+
+@media(min-width:1024px){
+
+    .InscreverForm{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
