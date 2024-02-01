@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+.CriarEvento{
+    padding: 80px 30px 30px 30px ;  
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+form{
+    max-width: 300px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.FormButtonDecision{
+    position: absolute;
+    right: 0;
+    display: flex;
+    gap: 10px;
+   
+}
+.FormButtonDecision>input{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    padding: 6px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+
+}
+.InputImagemDIV{
+   text-align: center;
+   margin-top: 70px;
+   margin-bottom: 30px;
+   border: 2px dashed #575656;
+   padding: 40px;
+   border-radius: 15px;
+   background-color: #1E1E1E;
+   
+   
+}
+.InputImagem{
+    color: white;
+}
+.FormButtonRed{
+    background-color: #c90101;
+
+}
+.FormButtonRed:hover{
+    background-color: #ec0404;
+    cursor: pointer;
+
+}
+.FormButtonGreen{
+    background-color: #00C54E;
+
+}
+.FormButtonGreen:hover{
+    background-color: #04f163;
+    cursor: pointer;
+
+}
+.Campo{
+    display: flex;
+    background: #1E1E1E;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+.Campo>input{
+    background-color: #1E1E1E;
+    border: none;
+    outline: none;
+    color: white;
+    outline: none;
+
+}
+
+
+.CriaEventoDescricao{
+    height: 100px;
+    position: relative;
+}
+.CriaEventoDescricao::placeholder{
+    position: absolute;
+    top: 5px;
+}
+
+@media(min-width:1024px){
+  
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
