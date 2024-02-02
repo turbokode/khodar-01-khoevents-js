@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-export const api = axios.create({ baseURL: 'http://localhost:3333/api/v1', withCredentials: true });
+
+const url = import.meta.env.VITE_SOME_KEY;
+export const api = axios.create({ baseURL: url, withCredentials: true });
 
 export function useFetch(url) {
   const [data, setData] = useState(null);

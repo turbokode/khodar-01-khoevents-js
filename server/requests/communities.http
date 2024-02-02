@@ -1,4 +1,4 @@
-@url = http://localhost:3333/api/v1/communities
+@url = https://khoevents.onrender.com/api/v1/communities
 
 POST {{url}}
 Content-Type: application/json
