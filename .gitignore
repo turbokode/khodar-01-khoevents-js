@@ -1,5 +1,6 @@
 */**/uploads/*
 !*/**/.gitkeep
+.env.production
 
 # Logs
 logs

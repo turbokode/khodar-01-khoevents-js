@@ -1,10 +1,16 @@
 import { createClient } from 'redis';
-
+import { REDIS_USER, REDIS_HOST, REDIS_PASS, REDIS_PORT } from '../utils/env.js';
 class Redis {
   #client;
 
   constructor() {
-    createClient()
+    createClient({
+      password: REDIS_PASS,
+      socket: {
+        host: REDIS_HOST,
+        port: REDIS_PORT
+      }
+    })
       .on('error', (err) => console.log('Redis Client Error', err))
       .connect()
       .then((client) => {

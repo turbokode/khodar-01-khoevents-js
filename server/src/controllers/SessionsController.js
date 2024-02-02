@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { randomUUID } from 'crypto';
 import { sendMail } from '../lib/mail.js';
 import { redis } from '../database/redis.js';
+import { APP_SECRET } from '../utils/env.js';
 
 export class SessionsController {
   communityRepository = new CommunitiesRepository();
@@ -22,7 +23,7 @@ export class SessionsController {
       {
         id: community.id
       },
-      process.env.APP_SECRET,
+      APP_SECRET,
       { expiresIn: '1d' }
     );
     return reply
@@ -44,7 +45,7 @@ export class SessionsController {
       to: email,
       text: `Clique no <a href="${resetLink}">link</a> para mudar a senha`
     });
-    
+
     return reply.status(204).send();
   }
 

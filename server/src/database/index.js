@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { APP_HOST, APP_PORT, API_PREFIX } from '../utils/env.js';
 
 export const prisma = new PrismaClient().$extends({
   result: {
@@ -6,7 +7,7 @@ export const prisma = new PrismaClient().$extends({
       url: {
         needs: { filename: true },
         compute(file) {
-          return `http://localhost:3333/api/v1/public/${file.filename}`;
+          return `${APP_HOST}:${APP_PORT}/${API_PREFIX}/public/${file.filename}`;
         }
       }
     }

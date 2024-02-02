@@ -7,18 +7,19 @@ import { routes } from './routes/index.js';
 import './database/redis.js';
 import { ZodError } from 'zod';
 import { AppError } from './errors/AppError.js';
+import { WEB_URL, APP_SECRET, APP_ENV, APP_PORT } from './utils/env.js';
 
 const fastify = Fastify({
   logger: true
 });
 await fastify.register(cors, {
-  origin: 'http://localhost:5173',
+  origin: WEB_URL,
   credentials: true
 });
 
 fastify.register(fastifyMultipart, { attachFieldsToBody: true });
 fastify.register(fastifyCookie, {
-  secret: process.env.APP_SECRET,
+  secret: APP_SECRET,
   hook: 'onRequest',
   parseOptions: {
     httpOnly: true,
@@ -42,8 +43,11 @@ fastify.setErrorHandler((error, request, reply) => {
   } else if (error instanceof AppError) {
     return reply.status(error.statusCode).send({ error: error.error, message: error.message });
   }
-
-  return reply.status(500).send(error);
+  if (APP_ENV === 'dev') {
+    return reply.status(500).send(error);
+  } else {
+    return reply.status(500).send({ error: 'Internal server error' });
+  }
 });
 
-fastify.listen({ port: 3333 }).then(() => console.log('Server running on 3333'));
+fastify.listen({ port: APP_PORT }).then(() => console.log('Server running on 3333'));
