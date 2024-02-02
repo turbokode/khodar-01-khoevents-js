@@ -68,6 +68,13 @@ export class CommunitiesController {
     return reply.send(communities);
   }
 
+  async showMe(request, reply) {
+    const { communityId } = request;
+
+    const community = await this.repository.getById(communityId);
+
+    return reply.send(community);
+  }
   async show(request, reply) {
     const { id } = request.params;
 

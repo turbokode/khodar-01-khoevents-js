@@ -12,7 +12,8 @@ const fastify = Fastify({
   logger: true
 });
 await fastify.register(cors, {
-  origin: '*'
+  origin: 'http://localhost:5173',
+  credentials: true
 });
 
 fastify.register(fastifyMultipart, { attachFieldsToBody: true });
@@ -25,8 +26,6 @@ fastify.register(fastifyCookie, {
   }
 });
 fastify.register(routes, { prefix: '/api/v1' });
-
-
 
 fastify.setErrorHandler((error, request, reply) => {
   // if (error instanceof Fastify.errorCodes.FST_ERR_BAD_STATUS_CODE) {
@@ -48,25 +47,3 @@ fastify.setErrorHandler((error, request, reply) => {
 });
 
 fastify.listen({ port: 3333 }).then(() => console.log('Server running on 3333'));
-
-// ('[
-//     {
-//       "validation": "email",
-//     "code": "invalid_string",
-//     "message": "Invalid email",
-//     "path": [
-//         "email"
-//     ]
-//   },
-//   {
-//       "code": "too_small",
-//     "minimum": 6,
-//     "type": "string",
-//     "inclusive": true,
-//     "exact": false,
-//     "message": "Must be 5 or more characters long",
-//     "path": [
-//         "password"
-//     ]
-//   }
-// ]')

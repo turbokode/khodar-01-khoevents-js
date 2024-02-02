@@ -2,23 +2,30 @@ import IconBack from '../../assets/Back.png';
 import './SignUp.css';
 import Message from '../../assets/Message.png';
 import Lock from '../../assets/Lock.png';
-import Hidden from '../../assets/Hidden.png';
 import Profile from '../../assets/Profile.png';
 
 import Logo from '../../componentes/Logo';
 import { useState } from 'react';
 import { Input } from '../../componentes/Input';
 import { post } from '../../services/api';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate();
+
   function handleSubmit(e) {
     e.preventDefault();
-    const response = post('/communities', { name, email, password }).then((response) => {
-      console.log(response);
+    post('/communities', { name, email, password }).then((response) => {
+      if (!response.error) {
+        alert('Conta criada');
+        navigate('/login');
+      } else {
+        alert('Erro');
+      }
     });
   }
 
@@ -27,9 +34,9 @@ export default function SignUp() {
       <Logo />
 
       <form action="#">
-        <a to="#">
+        <Link to="/login">
           <img src={IconBack} alt="Ícone Voltar" />
-        </a>
+        </Link>
 
         <h2 className="EntrarTitulo">Cadastro</h2>
         <Input label="Nome completo" name="name" icon={Profile} type="text" onChange={(e) => setName(e.target.value)} />
@@ -39,7 +46,7 @@ export default function SignUp() {
         <Input
           label="Password"
           name="password"
-          icon={Message}
+          icon={Lock}
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -48,9 +55,9 @@ export default function SignUp() {
 
         <p className="ContaCriar">
           Já tem uma comunidade😁?
-          <a to="#" className="Inscrever">
+          <Link to="/login" className="Inscrever">
             Entrar
-          </a>{' '}
+          </Link>
         </p>
       </form>
     </div>

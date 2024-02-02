@@ -62,7 +62,8 @@
   z-index: 1666711;
 }
 
-.NavBar > a {
+.NavBar > a,
+.NavBar > button {
   text-decoration: none;
   color: white;
   background-color: #303030;
@@ -71,8 +72,11 @@
   border-radius: 7px;
   font-weight: 500;
   font-size: 14px;
+  border: 0;
 }
-.NavBar > a:hover {
+
+.NavBar > a:hover,
+.NavBar > button:hover {
   background-color: #00c54e;
   transition: background-color 0.5s ease-in-out;
   cursor: pointer;

@@ -4,6 +4,7 @@ import { auth } from '../hooks/auth.js';
 const communitiesController = new CommunitiesController();
 
 export async function communityRoutes(fastify, opts) {
+  fastify.register(authRoutes);
   fastify.post('/', (request, reply) => communitiesController.create(request, reply));
   fastify.get('/', (request, reply) => communitiesController.list(request, reply));
   fastify.get('/:id', (request, reply) => communitiesController.show(request, reply));
@@ -19,4 +20,6 @@ async function authRoutes(fastify) {
   fastify.patch('/avatar', { preHandler: upload('avatar') }, (request, reply) =>
     communitiesController.updateAvatar(request, reply)
   );
+
+  fastify.get('/me', (request, reply) => communitiesController.showMe(request, reply));
 }

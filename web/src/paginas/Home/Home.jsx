@@ -6,13 +6,17 @@ import MozdevzLogo from '../../assets/MozdevzLogo.png';
 import './Home.css';
 import DataWave2 from '../../assets/DataWave2.png';
 import HackDay from '../../assets/HackDay.png';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../contexts/auth';
 import { useFetch } from '../../services/api';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const { data: communities } = useFetch('/communities');
   const { data: events } = useFetch('/events');
   const [Menu, setMenu] = useState(false);
+
+  const { signed, logout, user } = useContext(AuthContext);
 
   const defaultAvatar = createAvatar(identicon);
 
@@ -20,13 +24,24 @@ export default function Home() {
     setMenu(!Menu);
   }
 
-  console.log(events);
+  function handleLogout() {
+    logout();
+  }
 
   return (
     <div className="Home">
       <div className={Menu ? 'NavBar visivel' : 'NavBar invisivel'} id="NavBar">
-        <a to="#">Sua comunidade</a>
-        <a to="#">Login</a>
+        {signed ? (
+          <>
+            <a to="#">Sua comunidade</a>
+            <button onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <>
+            <a to="#">Criar conta</a>
+            <Link to="/login">Login</Link>
+          </>
+        )}
       </div>
 
       <section className="ConteudoPrincipal">
@@ -64,7 +79,7 @@ export default function Home() {
             <section className="BoxEventos">
               {events?.map((event) => {
                 return (
-                  <div className="BoxEventoConteudo">
+                  <Link key={event.id} className="BoxEventoConteudo" to={`/events/${event.id}`}>
                     <div className="overlay">
                       <p className="NomeComunidade">{event.community.name}</p>
                       <img className="ImagemEvento" src={event.banner.url} alt="Icone Evento" />
@@ -76,7 +91,7 @@ export default function Home() {
                         <p className="LocalEvento">UEM-FENG</p>
                       </article>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </section>

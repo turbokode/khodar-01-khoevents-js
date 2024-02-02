@@ -1,106 +1,101 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
-.Login{
-    padding: 80px 30px 30px 30px ;  
+.Login {
+  padding: 80px 30px 30px 30px;
 }
 
-.Login>.Logo{
-    margin: auto;
+.Login > .Logo {
+  margin: auto;
 }
-.EntrarTitulo{
-    width: max-content;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    font-weight: 500;
-    font-size: 20px;
-    
-    margin-top: 50px;
-    margin-bottom: 20px;
-    
+.EntrarTitulo {
+  width: max-content;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
-form{
-    max-width: 300px;
-    margin: auto;
+form {
+  max-width: 300px;
+  margin: auto;
 }
-.Campo{
+.Campo {
+  display: flex;
+  background: #1e1e1e;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.Campo > input {
+  background-color: #1e1e1e;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.Submeter {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  display: block;
+  width: 250px;
+  height: 45px;
+  margin: auto;
+  background-color: #00c54e;
+  border: none;
+  border-radius: 15px;
+  background-image: url(../../assets/BotaoSubmeter.png);
+  background-repeat: no-repeat;
+  background-position: 85%;
+  font-size: 16px;
+}
+.Submeter:hover {
+  background-color: #01ee60;
+  cursor: pointer;
+}
+.ContaCriar {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 30px;
+}
+.Inscrever {
+  color: #04a042;
+  text-decoration: none;
+}
+.Inscrever:hover {
+  color: #01ee60;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .Login {
+    padding: 0;
     display: flex;
-    background: #1E1E1E;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-}
-.Campo>input{
-    background-color: #1E1E1E;
-    border: none;
-    outline: none;
-    color: white;
-    outline: none;
-
-}
-
-.Submeter{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    display: block;
-    width: 250px;
-    height: 45px ;
-    margin: auto;
-    background-color: #00C54E;
-    border: none;
-    border-radius: 15px;
-    background-image: url(../../assets/BotaoSubmeter.png);
-    background-repeat: no-repeat;
-    background-position: 85%;
-    font-size: 16px;
-}
-.Submeter:hover{
-    background-color: #01ee60;
-    cursor: pointer;
-}
-.ContaCriar{
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    font-size: 13px;
-    font-weight: 400;
-    text-align: center;
-    margin-top: 30px;
-}
-.Inscrever{
-    color: #04a042;
-    text-decoration: none;
-
-}
-.Inscrever:hover{
-    color: #01ee60;
-    cursor: pointer;
-}
-
-@media(min-width:1024px){
-    .Login{
-        padding: 0;
-       display: flex; 
-       width: 100%;
-    }
-    .Login>.Logo{
-        width: 40vw;
-        height: 100vh;
-        background-color: #000000;
-        margin: 0;
-        width: 50vw;
-    }
-    .Login>.Logo>h1{
-        width: max-content;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%); 
-        font-size: 70px;
-       
-    }
-    form{
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
+    width: 100%;
+  }
+  .Login > .Logo {
+    width: 40vw;
+    height: 100vh;
+    background-color: #000000;
+    margin: 0;
+    width: 50vw;
+  }
+  .Login > .Logo > h1 {
+    width: max-content;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 70px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
 }
